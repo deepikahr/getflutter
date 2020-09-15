@@ -117,37 +117,36 @@ class _MyHomePageState extends State<MyHomePage>
 
   @override
   Widget build(BuildContext context) => Scaffold(
-      key: _scaffoldKey,
-      appBar: GFAppBar(
-        backgroundColor: Colors.blueGrey,
-        title: const Text('UI Kit'),
-        centerTitle: true,
-      ),
+      appBar: GFAppBar(title: const Text('UI KIt'),),
       body: ListView(
-            children: [
-              Container(height: 200, color: Colors.teal,),
-              StickyHeader(
-                  header: Container(
-                    height: 50,
-                    color: Colors.blueGrey[700],
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    alignment: Alignment.centerLeft,
-                    child: const Text('Header',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                  content: ListView.builder(
-                    itemCount: imageList.length,
-                    itemBuilder: (context, index) =>
-                        Container(
-                          child: Image.network(imageList[index], fit: BoxFit.cover,
-                              width: double.infinity, height: 200),
-                        ),
-                  )
+        children: [
+          Image.network(imageList[3], height: 200, fit: BoxFit.cover,),
+          Image.network(imageList[4], height: 200, fit: BoxFit.cover,),
+          StickyHeader(
+            header: Container(
+              height: 100,
+              color: Colors.teal,
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              alignment: Alignment.centerLeft,
+              child: const Text(
+                'Title',
+                style: TextStyle(color: Colors.white),
               ),
-            ],
+            ),
+            content: ListView(
+              shrinkWrap: true,
+              physics: const ScrollPhysics(),
+              children: [
+                Image.network(imageList[0], height: 200, fit: BoxFit.fill,),
+                Image.network(imageList[1], height: 200, fit: BoxFit.fill,),
+                Image.network(imageList[2], height: 200, fit: BoxFit.fill,)
+              ],
+            ),
           )
+        ],
+      )
   );
+
 
 //    SingleChildScrollView(
 //      child: Column(
