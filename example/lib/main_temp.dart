@@ -19,13 +19,13 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
-    title: 'GetWidget Example',
-    theme: ThemeData(
-      primarySwatch: Colors.blue,
-    ),
-    debugShowCheckedModeBanner: false,
-    home: const MyHomePage(title: 'GetWidget Example'),
-  );
+        title: 'GetWidget Example',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        debugShowCheckedModeBanner: false,
+        home: const MyHomePage(title: 'GetWidget Example'),
+      );
 }
 
 class MyHomePage extends StatefulWidget {
@@ -85,15 +85,14 @@ class _MyHomePageState extends State<MyHomePage>
     'https://cdn.pixabay.com/photo/2017/12/13/00/23/christmas-3015776_960_720.jpg',
   ];
 
-
   void _persistentBottomSheet() {
     _scaffoldKey.currentState.showBottomSheet((context) => Container(
-      color: Colors.redAccent,
-      height: 250,
-      child: const Center(
-        child: Text('Hey! guys , this is a persistent bottom sheet'),
-      ),
-    ));
+          color: Colors.redAccent,
+          height: 250,
+          child: const Center(
+            child: Text('Hey! guys , this is a persistent bottom sheet'),
+          ),
+        ));
   }
 
   void _modalBottomSheetMenu() {
@@ -101,47 +100,49 @@ class _MyHomePageState extends State<MyHomePage>
         context: context,
         elevation: 10,
         builder: (builder) => Container(
-          height: 350,
-          color: Colors.transparent,
-          child: Container(
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      topRight: Radius.circular(10))),
-              child: const Center(
-                child: Text('This is a modal sheet'),
-              )),
-        ));
+              height: 350,
+              color: Colors.transparent,
+              child: Container(
+                  decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(10))),
+                  child: const Center(
+                    child: Text('This is a modal sheet'),
+                  )),
+            ));
   }
 
   @override
   Widget build(BuildContext context) => Scaffold(
-      appBar: GFAppBar(title: const Text('UI KIt'),),
-      body:
-
-
-      ListView.builder(itemCount: imageList.length,itemBuilder: (context, index) =>
-          Material(
-          color: Colors.grey[300],
-          child: GFStickyHeader(
-            header: Container(
-              height: 50.0,
-              color: Colors.blueGrey[700],
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
-              alignment: Alignment.centerLeft,
-              child: Text('Header #$index',
-                style: const TextStyle(color: Colors.white),
-              ),
-            ),
-            content: Container(
-              child: Image.network(imageList[index], fit: BoxFit.cover,
-                  width: double.infinity, height: 200.0),
-            ),
-          ),
-        )
-      ),
-  );
+        appBar: GFAppBar(
+          title: const Text('UI KIt'),
+        ),
+        body: ListView.builder(
+            itemCount: imageList.length,
+            itemBuilder: (context, index) => Material(
+                  color: Colors.grey[300],
+                  child: GFStickyHeader(
+                    header: Container(
+                      height: 50.0,
+                      color: Colors.blueGrey[700],
+                      padding: EdgeInsets.symmetric(horizontal: 16.0),
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Header #$index',
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    content: Container(
+                      child: Image.network(imageList[index],
+                          fit: BoxFit.cover,
+                          width: double.infinity,
+                          height: 200.0),
+                    ),
+                  ),
+                )),
+      );
 
   //     ListView(
   //       children: [
@@ -174,7 +175,6 @@ class _MyHomePageState extends State<MyHomePage>
   //       ],
   //     ),
   // );
-
 
 //    SingleChildScrollView(
 //      child: Column(

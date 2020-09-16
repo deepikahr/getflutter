@@ -11,9 +11,9 @@ class GFStickyHeader extends MultiChildRenderObjectWidget {
     @required this.content,
     this.enableHeaderOverlap = false,
   }) : super(
-    key: key,
-    children: [content, header],
-  );
+          key: key,
+          children: [content, header],
+        );
 
   /// widget can be used to define [header].
   final Widget header;
@@ -36,12 +36,10 @@ class GFStickyHeader extends MultiChildRenderObjectWidget {
   }
 }
 
-
 class RenderGFStickyHeader extends RenderBox
     with
         ContainerRenderObjectMixin<RenderBox, MultiChildLayoutParentData>,
         RenderBoxContainerDefaultsMixin<RenderBox, MultiChildLayoutParentData> {
-
   RenderGFStickyHeader({
     @required ScrollableState scrollable,
     bool enableHeaderOverlap = false,
@@ -86,20 +84,30 @@ class RenderGFStickyHeader extends RenderBox
     final headerTileHeight = _headerTile.size.height;
     final contentBodyHeight = _contentBody.size.height;
 
-    final height = max(constraints.minHeight, _enableHeaderOverlap ? contentBodyHeight : headerTileHeight + contentBodyHeight);
+    final height = max(
+        constraints.minHeight,
+        _enableHeaderOverlap
+            ? contentBodyHeight
+            : headerTileHeight + contentBodyHeight);
     final width = max(constraints.minWidth, contentBodyHeight);
 
-    size =  Size(constraints.constrainWidth(width), constraints.constrainHeight(height));
+    size = Size(
+        constraints.constrainWidth(width), constraints.constrainHeight(height));
 
     final scrollableContent = _scrollable.context.findRenderObject();
-    final double headerTileOffset = scrollableContent.attached ? localToGlobal(Offset.zero, ancestor: scrollableContent).dy : Offset.zero;
+    final double headerTileOffset = scrollableContent.attached
+        ? localToGlobal(Offset.zero, ancestor: scrollableContent).dy
+        : Offset.zero;
 
-    final MultiChildLayoutParentData contentBodyParentData = _contentBody.parentData;
-    contentBodyParentData.offset = Offset(0, _enableHeaderOverlap ? 0.0 : headerTileHeight);
+    final MultiChildLayoutParentData contentBodyParentData =
+        _contentBody.parentData;
+    contentBodyParentData.offset =
+        Offset(0, _enableHeaderOverlap ? 0.0 : headerTileHeight);
 
-    final MultiChildLayoutParentData headerTileParentData = _headerTile.parentData;
-    headerTileParentData.offset =  Offset(0, max(0, min(-headerTileOffset, height - headerTileHeight)));
-
+    final MultiChildLayoutParentData headerTileParentData =
+        _headerTile.parentData;
+    headerTileParentData.offset =
+        Offset(0, max(0, min(-headerTileOffset, height - headerTileHeight)));
   }
 
   @override
