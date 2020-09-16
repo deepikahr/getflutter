@@ -118,34 +118,62 @@ class _MyHomePageState extends State<MyHomePage>
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: GFAppBar(title: const Text('UI KIt'),),
-      body: ListView(
-        children: [
-          Image.network(imageList[3], height: 200, fit: BoxFit.cover,),
-          Image.network(imageList[4], height: 200, fit: BoxFit.cover,),
-          StickyHeader(
+      body:
+
+
+      ListView.builder(itemCount: imageList.length,itemBuilder: (context, index) =>
+          Material(
+          color: Colors.grey[300],
+          child: GFStickyHeader(
             header: Container(
-              height: 100,
-              color: Colors.teal,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              height: 50.0,
+              color: Colors.blueGrey[700],
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
               alignment: Alignment.centerLeft,
-              child: const Text(
-                'Title',
-                style: TextStyle(color: Colors.white),
+              child: Text('Header #$index',
+                style: const TextStyle(color: Colors.white),
               ),
             ),
-            content: ListView(
-              shrinkWrap: true,
-              physics: const ScrollPhysics(),
-              children: [
-                Image.network(imageList[0], height: 200, fit: BoxFit.fill,),
-                Image.network(imageList[1], height: 200, fit: BoxFit.fill,),
-                Image.network(imageList[2], height: 200, fit: BoxFit.fill,)
-              ],
+            content: Container(
+              child: Image.network(imageList[index], fit: BoxFit.cover,
+                  width: double.infinity, height: 200.0),
             ),
-          )
-        ],
-      )
+          ),
+        )
+      ),
   );
+
+  //     ListView(
+  //       children: [
+  //         Image.network(imageList[3], height: 200, fit: BoxFit.cover,),
+  //         Image.network(imageList[4], height: 200, fit: BoxFit.cover,),
+  //         GFStickyHeader(
+  //           header: Container(
+  //             height: 100,
+  //             color: Colors.teal,
+  //             padding: const EdgeInsets.symmetric(horizontal: 16),
+  //             alignment: Alignment.centerLeft,
+  //             child: const Text(
+  //               'Title',
+  //               style: TextStyle(color: Colors.white),
+  //             ),
+  //           ),
+  //           content: ListView(
+  //             shrinkWrap: true,
+  //             physics: const ScrollPhysics(),
+  //             children: [
+  //               Image.network(imageList[0], height: 200, fit: BoxFit.fill,),
+  //               Image.network(imageList[1], height: 200, fit: BoxFit.fill,),
+  //               Image.network(imageList[2], height: 200, fit: BoxFit.fill,),
+  //               Image.network(imageList[0], height: 200, fit: BoxFit.fill,),
+  //               Image.network(imageList[1], height: 200, fit: BoxFit.fill,),
+  //               Image.network(imageList[2], height: 200, fit: BoxFit.fill,)
+  //             ],
+  //           ),
+  //         )
+  //       ],
+  //     ),
+  // );
 
 
 //    SingleChildScrollView(
