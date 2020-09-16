@@ -108,6 +108,7 @@ class RenderGFStickyHeader extends RenderBox
         _headerTile.parentData;
     headerTileParentData.offset =
         Offset(0, max(0, min(-headerTileOffset, height - headerTileHeight)));
+
   }
 
   @override
