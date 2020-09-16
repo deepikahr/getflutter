@@ -9,16 +9,21 @@ class GFStickyHeader extends MultiChildRenderObjectWidget {
     Key key,
     @required this.header,
     @required this.content,
+    this.enableHeaderOverlap = false,
   }) : super(
     key: key,
     children: [content, header],
   );
 
-  ///
+  /// widget can be used to define [header].
   final Widget header;
 
-  ///
+  /// widget can be used to define [content].
   final Widget content;
+
+  /// On state true, the [header] will overlap the [content].
+  /// Default value is false.
+  final bool enableHeaderOverlap;
 
   @override
   RenderGFStickyHeader createRenderObject(BuildContext context) {
@@ -26,7 +31,7 @@ class GFStickyHeader extends MultiChildRenderObjectWidget {
     assert(scrollable != null);
     return RenderGFStickyHeader(
       scrollable: scrollable,
-      enableHeaderOverlap: false,
+      enableHeaderOverlap: enableHeaderOverlap,
     );
   }
 }
